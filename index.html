@@ -1,0 +1,440 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SpartanGrid by SimonHarte</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>SpartanGrid</h1>
+        <p>This is madness...</p>
+
+        <p class="view"><a href="https://github.com/SimonHarte/SpartanGrid">View the Project on GitHub <small>SimonHarte/SpartanGrid</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/SimonHarte/SpartanGrid/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/SimonHarte/SpartanGrid/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/SimonHarte/SpartanGrid">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="spartan" class="anchor" href="#spartan" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spartan</h1>
+
+<p>A highly customizable yet tiny, standalone LessCSS grid system. Try the <a href="http://spartan-grid.herokuapp.com/">dynamic online demo</a>.</p>
+
+<blockquote>
+<p>Requires <a href="https://github.com/less/less.js">LessCSS</a> version 1.6.0 or above. Does <strong>not</strong> work with v1.7.0 
+because of <a href="https://github.com/less/less.js/pull/1929#issuecomment-45307325">this bug</a> (fixed in v1.7.1).</p>
+
+<p><a href="http://lessphp.gpeasy.com/Demo">Tested with Less.php</a> version 1.6.3</p>
+</blockquote>
+
+<h2>
+<a id="what-sets-spartan-apart" class="anchor" href="#what-sets-spartan-apart" aria-hidden="true"><span class="octicon octicon-link"></span></a>What sets Spartan apart?</h2>
+
+<p>Spartan can mainly shine through its very unique <a href="#grid-setup"><strong>grid creation API</strong></a>.
+While you define some variables in other grid systems which will then be used to create a predefined grid structure, 
+Spartan provides you with a sensible set of less mixins to freely customize your setup and get the most out of our grid system:
+<strong>you define</strong> how you want to use <strong>your grid</strong>!</p>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#comparison">Comparison with other Grids</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#grid-structure">Grid Structure</a></li>
+<li>
+<a href="#basic-usage">Basic Usage</a>
+
+<ul>
+<li><a href="#grid-setup">Grid Setup</a></li>
+<li><a href="#grid-classes-and-mixins">Grid Classes and Mixins</a></li>
+</ul>
+</li>
+<li><a href="#advanced-usage">Advanced Usage</a></li>
+<li>
+<a href="#browser-support">Browser Support</a>
+
+<ul>
+<li><a href="#the-safari-problem">The Safari Problem</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>supports all features of other common grid systems:
+
+<ul>
+<li>fluid or static grid</li>
+<li>fully responsive</li>
+<li>block gutter (fixed gutter in a fluid grid)</li>
+<li>column offsets</li>
+<li>column reordering</li>
+</ul>
+</li>
+<li>grid creation API for maximum flexibility</li>
+<li>customizable css classes</li>
+<li>tiny: <strong>1.8KB</strong> of minified base css</li>
+</ul>
+
+<h2>
+<a id="comparison" class="anchor" href="#comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison</h2>
+
+<blockquote>
+<p>Install <a href="https://chrome.google.com/webstore/detail/chromoji-emoji-for-google/cahedbegdkagmcjfolhdlechbkeaieki?hl=en-GB">Chromoji</a> if you're using Chrome to see the icons.</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"><a href="http://spartan-grid.herokuapp.com">Spartan</a></th>
+<th align="center"><a href="http://getbootstrap.com/css/#grid">Bootstrap</a></th>
+<th align="center"><a href="http://foundation.zurb.com/">Foundation</a></th>
+<th align="center"><a href="http://www.profoundgrid.com/">Profound</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>less</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+</tr>
+<tr>
+<td>sass</td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>fluid</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>static</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>responsive</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>block gutter</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+</tr>
+<tr>
+<td>column ordering</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>offsets</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>multiple grids</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>custom classes</td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="x" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/274c.png">❌</g-emoji></td>
+<td align="center"><g-emoji alias="white_check_mark" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></td>
+</tr>
+<tr>
+<td>output css (min)</td>
+<td align="center"><strong>1.8-5KB</strong></td>
+<td align="center"><strong>8.3KB</strong></td>
+<td align="center"><strong>15.1KB</strong></td>
+<td align="center"><strong>~10KB</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<ul>
+<li>Install <a href="http://nodejs.org/">Node</a> and then LessCSS: <code>npm install -g less</code>
+</li>
+</ul>
+
+<h3>
+<a id="have-a-project-at-the-ready" class="anchor" href="#have-a-project-at-the-ready" aria-hidden="true"><span class="octicon octicon-link"></span></a>Have a Project at the Ready?</h3>
+
+<ul>
+<li>Integrate <a href="https://github.com/SimonHarte/SpartanGrid/blob/master/src/spartan.less"><code>src/spartan.less</code></a> in your project</li>
+<li>Use the <a href="#grid-setup">API mixin(s)</a> to set up your grid</li>
+</ul>
+
+<blockquote>
+<p>Spartan will not generate any CSS until you use the setup API.</p>
+</blockquote>
+
+<h3>
+<a id="just-want-to-fiddle-around" class="anchor" href="#just-want-to-fiddle-around" aria-hidden="true"><span class="octicon octicon-link"></span></a>Just want to fiddle around?</h3>
+
+<ul>
+<li>Download Spartan</li>
+<li>Adjust <code>grid-setup.less</code>
+</li>
+<li>Execute: <code>sh scripts/compile.sh</code>
+</li>
+</ul>
+
+<h2>
+<a id="grid-structure" class="anchor" href="#grid-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grid Structure</h2>
+
+<p>Here's a short example of Spartans base structure in a 12-column grid:</p>
+
+<p><strong>HTML</strong></p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>g-row<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>g-col g-span-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>g-col g-span-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>g-col g-span-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>g-col g-span-3<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<ul>
+<li>
+<code>.g-row</code> initializes a grid row with negative left margin (gutter) and uses <a href="https://github%0A.com/h5bp/html5-boilerplate/blob/master/css/main.css#L161">H5BP clearfix</a> to contain the floating <code>.g-col</code>s.</li>
+<li>
+<code>.g-col</code> applies default column styles like float and padding (gutter).</li>
+<li>
+<code>.g-span-&lt;columns&gt;</code> applies a column based width according ot the set maximum amount of columns.</li>
+</ul>
+
+<p>Check out <a href="https://github.com/SimonHarte/SpartanGrid/blob/develop/Documentation.md#responsive-approaches">responsive approaches</a> with Spartan.</p>
+
+<h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<h3>
+<a id="grid-setup" class="anchor" href="#grid-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grid Setup</h3>
+
+<p>There are two ways to set up a grid with Spartan, within the basic usage we only explain the simpler one. If you need more flexibility, to set up viewport dependent grids etc. go to the <a href="#responsiveness-and-customization">advanced usage</a> section.</p>
+
+<p>The basic grid setup requires you to call just one mixin, pass in a configuration and an optional prefix (read more about custom classes in the <a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#custom-classes">documentation</a>).</p>
+
+<div class="highlight highlight-less"><pre><span class="pl-vo">@grid-config</span>: <span class="pl-k">&lt;</span>grid<span class="pl-k">-</span><span class="pl-s3">width</span><span class="pl-k">&gt;</span>, <span class="pl-k">&lt;</span>grid<span class="pl-k">-</span>type<span class="pl-k">&gt;</span>, <span class="pl-k">&lt;</span>gutter<span class="pl-k">-</span><span class="pl-s3">width</span><span class="pl-k">&gt;</span>, <span class="pl-k">&lt;</span>gutter<span class="pl-k">-</span>type<span class="pl-k">&gt;</span>, <span class="pl-k">&lt;</span>grid<span class="pl-k">-</span>columns<span class="pl-k">&gt;</span>;
+
+<span class="pl-e">.grid-bundle</span>([prefix], <span class="pl-vo">@grid-config</span>);</pre></div>
+
+<p>If you are not using a grid prefix, you have to name the config param, so <code>.grid-bundle()</code> correctly receives the configuration and doesn't think it's the prefix.</p>
+
+<div class="highlight highlight-less"><pre><span class="pl-e">.grid-bundle</span>(<span class="pl-vo">@config</span>: <span class="pl-vo">@grid-config</span>);</pre></div>
+
+<h4>
+<a id="setup-params" class="anchor" href="#setup-params" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup Params</h4>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[prefix]</code></td>
+<td align="left">string</td>
+<td align="left"></td>
+<td align="left">quotes optional</td>
+</tr>
+<tr>
+<td><code>&lt;grid-width&gt;</code></td>
+<td align="left">pixel</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><code>&lt;grid-type&gt;</code></td>
+<td align="left">string</td>
+<td align="left">
+<code>fluid</code> or <code>fixed</code>
+</td>
+<td align="left">quotes optional</td>
+</tr>
+<tr>
+<td><code>&lt;gutter-width&gt;</code></td>
+<td align="left">number</td>
+<td align="left"></td>
+<td align="left">
+<code>px</code>, <code>%</code> or <code>em/rem</code>, only reacts to <code>&lt;gutter-type&gt;</code> with <code>px</code>
+</td>
+</tr>
+<tr>
+<td><code>&lt;gutter-type&gt;</code></td>
+<td align="left">string</td>
+<td align="left">
+<code>fluid</code> or <code>fixed</code>
+</td>
+<td align="left">forced to <code>fixed</code> if <code>&lt;grid-type&gt;</code> is <code>fixed</code>
+</td>
+</tr>
+<tr>
+<td><code>&lt;grid-columns&gt;</code></td>
+<td align="left">integer</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="example-setup" class="anchor" href="#example-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Setup</h4>
+
+<p><strong>LessCSS</strong></p>
+
+<div class="highlight highlight-less"><pre><span class="pl-vo">@grid-config</span>:<span class="pl-c1"> 940</span><span class="pl-k">px</span>, <span class="pl-s1"><span class="pl-pds">'</span>fluid<span class="pl-pds">'</span></span>,<span class="pl-c1"> 20</span><span class="pl-k">px</span>, <span class="pl-s1"><span class="pl-pds">'</span>fixed<span class="pl-pds">'</span></span>,<span class="pl-c1"> 12</span>;
+
+<span class="pl-e">.grid-bundle</span>(<span class="pl-vo">@config</span>: <span class="pl-vo">@grid-config</span>);</pre></div>
+
+<h3>
+<a id="grid-classes-and-mixins" class="anchor" href="#grid-classes-and-mixins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grid Classes and Mixins</h3>
+
+<p>Spartan comes with an integrated LessCSS loop to generate grid classes according to your configuration. Instead of using
+the generated classes you can also use similar named mixins to apply the grid in a less style sheet.</p>
+
+<div class="highlight highlight-less"><pre><span class="pl-e">.grid-span</span>(<span class="pl-k">&lt;</span>columns<span class="pl-k">&gt;</span>), <span class="pl-e">.g-span-</span>{columns}
+<span class="pl-e">.grid-offset</span>(<span class="pl-k">&lt;</span>columns<span class="pl-k">&gt;</span>), <span class="pl-e">.g-offset-</span>{columns}
+<span class="pl-e">.grid-push</span>(<span class="pl-k">&lt;</span>columns<span class="pl-k">&gt;</span>), <span class="pl-e">.g-push-</span>{columns}
+<span class="pl-e">.grid-pull</span>(<span class="pl-k">&lt;</span>columns<span class="pl-k">&gt;</span>), <span class="pl-e">.g-pull-</span>{columns}</pre></div>
+
+<h4>
+<a id="grid-span" class="anchor" href="#grid-span" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>grid-span</code>
+</h4>
+
+<p>Override the width of a column (default is full-width), equivalent to <code>.g-span-{columns}</code>. This mixin allows you to pass
+in floating point numbers, which enables you to define literally <strong>any</strong> width using the mixin.</p>
+
+<div class="highlight highlight-less"><pre><span class="pl-c">// 5 columns per line in a 12 column grid</span>
+<span class="pl-e">.grid-span</span>(<span class="pl-c1">12</span><span class="pl-k">/</span><span class="pl-c1">5</span>);</pre></div>
+
+<h4>
+<a id="grid-offset" class="anchor" href="#grid-offset" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>grid-offset</code>
+</h4>
+
+<p>Indent a column by the defined amount of grid columns, equivalent to <code>.g-offset-{columns}</code>.
+While there are just positive indents in generated classes, you could also call this mixin with negative values.</p>
+
+<blockquote>
+<p><strong>Note:</strong> Using negative indents generally only works in static width grids.</p>
+</blockquote>
+
+<h4>
+<a id="grid-push-and-grid-pull" class="anchor" href="#grid-push-and-grid-pull" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<code>grid-push</code> and <code>grid-pull</code>
+</h4>
+
+<p>Together with the additional class <code>.g-reorder</code> on <code>.g-row</code> you can reorder columns visually without changing the 
+order in HTML. Equivalent to <code>.g-push-{columns}</code> and <code>.g-pull-{columns}</code>, similar behavior as <code>.grid-offset()</code>.</p>
+
+<blockquote>
+<p>Note that you may run into problems if these are used within certain responsive layouts as they use relative positioning.</p>
+</blockquote>
+
+<h5>
+<a id="grid-reorder" class="anchor" href="#grid-reorder" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>grid-reorder</code>
+</h5>
+
+<p>You can alternatively use <code>.grid-reorder()</code> and pass in any number. If the passed number is positive or zero, it will
+simply call <code>.grid-push()</code> and if the number is negative <code>.grid-pull()</code> instead.</p>
+
+<h2>
+<a id="advanced-usage" class="anchor" href="#advanced-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced Usage</h2>
+
+<p>There's a detailed <a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md">documentation</a> about every aspect of Spartan with different approaches to setting up your most flexible grid.</p>
+
+<p>Overview:</p>
+
+<ul>
+<li><a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#grid-creation-api">Grid Creation API</a></li>
+<li><a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#viewport-dependent-configurations">Viewport Dependent Configs</a></li>
+<li><a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#custom-classes">Custom Classes</a></li>
+<li><a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#semantic-grid">Semantic Grid</a></li>
+<li><a href="https://github.com/SimonHarte/SpartanGrid/blob/master/Documentation.md#responsive-approaches">Responsive Approaches</a></li>
+</ul>
+
+<h2>
+<a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser Support</h2>
+
+<p><strong>Not</strong> supported:</p>
+
+<ul>
+<li><strong>IE7-</strong></li>
+</ul>
+
+<p><strong>Partially</strong> supported:</p>
+
+<ul>
+<li>
+<strong>IE8</strong>: basic grid working properly, no media query support and <code>:nth-child</code> clearing, 
+<strong>Note:</strong> fully supported with <a href="https://github.com/scottjehl/Respond">respond.js</a> and <a href="http://selectivizr.com/">selectivizr.js</a> polyfills</li>
+<li>
+<strong>Safari</strong>: as explained <a href="#the-safari-problem">below</a>
+</li>
+</ul>
+
+<h3>
+<a id="the-safari-problem" class="anchor" href="#the-safari-problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Safari Problem</h3>
+
+<p>Unfortunately all Safari browsers up to the latest version have a bad subpixel rendering for widths and always round 
+values down to the next integer when calculating rendered pixels. So a width declaration of for example <code>88.333px</code> or
+ even <code>88.666px</code> will always be rendered as <code>88px</code>. This of course presents an issue when your grid configuration 
+ leads to such values or in general when you use a fluid grid, because we get a small displacement of columns.</p>
+
+<p>There's an <a href="http://ejohn.org/blog/sub-pixel-problems-in-css/">article from John Resig</a> about this subject.</p>
+
+<p>Note that all grid systems suffer from this issue and merely provide workarounds in some cases,
+Spartan does not try to do that but optimises its precision to avoid bad pixel rendering as much as possible.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/SimonHarte">SimonHarte</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
